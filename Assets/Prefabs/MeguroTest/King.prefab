@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5343895105448993910}
+  - component: {fileID: 5039825604691989109}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: King
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +32,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5039825604691989109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347224174277780408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118b51b2c6f3945f28dc24e6d3fbf7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: -1
+  playerID: -1
+  movableSpots: []
 --- !u!1 &4433921072535683859
 GameObject:
   m_ObjectHideFlags: 0
