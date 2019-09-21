@@ -159,31 +159,37 @@ MonoBehaviour:
     z: 0
     PiecePrefab: {fileID: 7776321754290631713, guid: fbe19b68b58c948d684133d9560cfbb7,
       type: 3}
+    PlayerID: 0
   - x: 2
     y: 2
     z: 0
     PiecePrefab: {fileID: 2347224174277780408, guid: 08fb82f7c23c3421da62f42a3a221008,
       type: 3}
+    PlayerID: 0
   - x: 3
     y: 2
     z: 0
     PiecePrefab: {fileID: 7776321754290631713, guid: fbe19b68b58c948d684133d9560cfbb7,
       type: 3}
+    PlayerID: 0
   - x: 1
     y: 2
     z: 4
     PiecePrefab: {fileID: 7776321754290631713, guid: fbe19b68b58c948d684133d9560cfbb7,
       type: 3}
+    PlayerID: 1
   - x: 2
     y: 2
     z: 4
     PiecePrefab: {fileID: 2347224174277780408, guid: 08fb82f7c23c3421da62f42a3a221008,
       type: 3}
+    PlayerID: 1
   - x: 3
     y: 2
     z: 4
     PiecePrefab: {fileID: 7776321754290631713, guid: fbe19b68b58c948d684133d9560cfbb7,
       type: 3}
+    PlayerID: 1
   PlatePrefab: {fileID: 413572480682886470, guid: d97ba3ce3825b4172b817d00e1efc54c,
     type: 3}
 --- !u!4 &864476483
