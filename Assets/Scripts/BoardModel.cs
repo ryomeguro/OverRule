@@ -130,6 +130,7 @@ public class BoardModel : MonoBehaviour
 
     void PiecePut()
     {
+        int currentId = 1;
         foreach (InitPiecePlace ip in InitPiecePlaces)
         {
             Debug.Log(ip.x + ":" + ip.y + ":" + ip.z);
@@ -139,6 +140,8 @@ public class BoardModel : MonoBehaviour
             Debug.Log(pieces[ip.x, ip.y, ip.z] + ":" + plates[ip.x, ip.y, ip.z]);
             p.transform.position = tf.position;
             p.transform.rotation = tf.rotation;
+
+            p.ID = currentId++;
         }
     }
 }
