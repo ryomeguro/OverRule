@@ -15,4 +15,9 @@ public class PieceViewer : MonoBehaviour
     {
         
     }
+
+    public void Move()
+    {
+        
+    }
 }

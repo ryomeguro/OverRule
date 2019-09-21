@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
+
+    public int ID = -1;
+    public int playerID = -1;
+
+    public Vector2Int[] movableSpots;
+    
     // Start is called before the first frame update
     void Start()
     {

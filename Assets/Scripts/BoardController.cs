@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardModel : MonoBehaviour
+public class BoardController : MonoBehaviour
 {
-    public Piece[,,] pieces;
-    public Transform[,,] plates;
+    public Piece selectedPiece;
+    
+    public void MovePiece(Vector3 movePosition)
+    {
+        
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -15,11 +19,6 @@ public class BoardModel : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-    }
-
-    public void Init()
     {
         
     }
