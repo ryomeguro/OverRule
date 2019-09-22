@@ -50,6 +50,7 @@ public class BoardModel : MonoBehaviour
                 p.position = new Vector3(xStart + unitScale * (i - 1), yPos, zStart + unitScale * (j - 1));
                 p.parent = transform;
                 p.GetComponent<Plate>().CoordinateSet(i, y + 1, j);
+                p.gameObject.SetActive(false);
             }
         }
 
@@ -64,6 +65,7 @@ public class BoardModel : MonoBehaviour
                 p.Rotate(new Vector3(180,0,0));
                 p.parent = transform;
                 p.GetComponent<Plate>().CoordinateSet(i, 0, j);
+                p.gameObject.SetActive(false);
             }
         }
         
@@ -80,6 +82,7 @@ public class BoardModel : MonoBehaviour
                 p.Rotate(new Vector3(90,0,0));
                 p.parent = transform;
                 p.GetComponent<Plate>().CoordinateSet(i, j, z + 1);
+                p.gameObject.SetActive(false);
             }
         }
 
@@ -95,6 +98,7 @@ public class BoardModel : MonoBehaviour
                 p.Rotate(new Vector3(-90,0,0));
                 p.parent = transform;
                 p.GetComponent<Plate>().CoordinateSet(i, j, 0);
+                p.gameObject.SetActive(false);
             }
         }
         
@@ -110,6 +114,7 @@ public class BoardModel : MonoBehaviour
                 p.Rotate(new Vector3(0,0,-90));
                 p.parent = transform;
                 p.GetComponent<Plate>().CoordinateSet(x + 1, j, i);
+                p.gameObject.SetActive(false);
             }
         }
 
@@ -124,9 +129,10 @@ public class BoardModel : MonoBehaviour
                 p.Rotate(new Vector3(0,0,90));
                 p.parent = transform;
                 p.GetComponent<Plate>().CoordinateSet(0, j, i);
+                p.gameObject.SetActive(false);
             }
         }
-        
+
     }
 
     float centerStart(int num)
