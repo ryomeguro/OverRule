@@ -19,6 +19,7 @@ public class TitleManager : MonoBehaviour
 
     public void GoToGameScene()
     {
+        GameInfo.Init();
         SceneManager.LoadScene("GameScene");
     }
 }
