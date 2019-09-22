@@ -18,32 +18,35 @@ public class Player : MonoBehaviour
         {
      
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit, 30.0f))
             {
-                //hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
                 if (hit.collider.gameObject.tag == "piece")
                 {
-                    //BoardController.Instance.selectedPiece = hit.collider.gameObject.GetComponent<Piece>();
-                    BoardController.Instance.SetSelectedPiece(hit.collider.gameObject.GetComponent<Piece>());
+                    Piece piece=hit.collider.gameObject.GetComponent<Piece>();
+                
+                        if (GameManager.Instance.CurrentPlayerID == piece.playerID)
+                        {
+                            //BoardController.Instance.selectedPiece = hit.collider.gameObject.GetComponent<Piece>();
+                            BoardController.Instance.SetSelectedPiece(hit.collider.gameObject.GetComponent<Piece>());
+                        }
+                    
                 }
-                if (hit.collider.gameObject.tag == "plate")
+
+                foreach (RaycastHit hitall in Physics.RaycastAll(ray))
                 {
-                    BoardController.Instance.MovePiece(hit.collider.gameObject.transform);
+                    if (hitall.collider.gameObject.tag == "plate")
+                    {
+                        BoardController.Instance.MovePiece(hit.collider.gameObject.transform);
+                    }
                 }
-                // Debug.Log(selectedObject.transform.position);
+
+
             }
         }
 
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 30.0f))
-            {
-               Debug.Log(hit.collider.gameObject);
-            }
-        }
+        
     }
 }

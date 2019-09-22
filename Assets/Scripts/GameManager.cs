@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public void PlayerChange()
     {
         CurrentPlayerID = (CurrentPlayerID + 1) % 2;
+        //CurrentPlayerID = 0;
     }
     
     // Start is called before the first frame update
