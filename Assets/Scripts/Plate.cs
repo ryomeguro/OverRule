@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Plate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int x, y, z;
 
-    // Update is called once per frame
-    void Update()
+    public void CoordinateSet(int x, int y, int z)
     {
-        
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 }
