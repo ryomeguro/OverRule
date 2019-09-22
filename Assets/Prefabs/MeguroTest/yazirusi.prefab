@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5669235433119057284}
   m_Layer: 0
   m_Name: yazirusi
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5955844840416208063, guid: fec73ff3e92484c0db160dc4f8767f58, type: 3}
+  - {fileID: 2100000, guid: 8ea5bc5cd2a4d43a2b20f4ca1fb56d95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

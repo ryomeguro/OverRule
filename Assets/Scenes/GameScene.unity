@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'yazirusi '
       objectReference: {fileID: 0}
+    - target: {fileID: 4814207708502289606, guid: 6dd0b8d7ba257481181abe7211afff43,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8400578621926743765, guid: 6dd0b8d7ba257481181abe7211afff43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -190,13 +195,19 @@ PrefabInstance:
     - target: {fileID: 6484666452572217142, guid: 6dd0b8d7ba257481181abe7211afff43,
         type: 3}
       propertyPath: direction
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd0b8d7ba257481181abe7211afff43, type: 3}
 --- !u!4 &276272445 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8400578621926743765, guid: 6dd0b8d7ba257481181abe7211afff43,
+    type: 3}
+  m_PrefabInstance: {fileID: 276272444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &540372824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4814207708502289606, guid: 6dd0b8d7ba257481181abe7211afff43,
     type: 3}
   m_PrefabInstance: {fileID: 276272444}
   m_PrefabAsset: {fileID: 0}
@@ -211,6 +222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: yazirusi (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814207708502289606, guid: 6dd0b8d7ba257481181abe7211afff43,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8400578621926743765, guid: 6dd0b8d7ba257481181abe7211afff43,
         type: 3}
@@ -270,7 +286,7 @@ PrefabInstance:
     - target: {fileID: 6484666452572217142, guid: 6dd0b8d7ba257481181abe7211afff43,
         type: 3}
       propertyPath: direction
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd0b8d7ba257481181abe7211afff43, type: 3}
@@ -336,6 +352,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: yazirusi (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814207708502289606, guid: 6dd0b8d7ba257481181abe7211afff43,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8400578621926743765, guid: 6dd0b8d7ba257481181abe7211afff43,
         type: 3}
@@ -405,7 +426,7 @@ PrefabInstance:
     - target: {fileID: 6484666452572217142, guid: 6dd0b8d7ba257481181abe7211afff43,
         type: 3}
       propertyPath: direction
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd0b8d7ba257481181abe7211afff43, type: 3}
@@ -611,13 +632,19 @@ PrefabInstance:
         type: 3}
       propertyPath: InitPiecePlaces.Array.data[5].PiecePrefab
       value: 
-      objectReference: {fileID: 7776321754290631713, guid: ba58e2f100e164ef599b2dbd5ae8969c,
+      objectReference: {fileID: 7776321754290631713, guid: 0e28ee50eb04d4cffa11819bb54f75b3,
         type: 3}
     - target: {fileID: 6630012560869196661, guid: de704a5904f0642e3b0114bb75e02ed7,
         type: 3}
       propertyPath: InitPiecePlaces.Array.data[1].PiecePrefab
       value: 
       objectReference: {fileID: 6058924654822342330, guid: 3976988447526463c9dba1aaa92f1a06,
+        type: 3}
+    - target: {fileID: 6630012560869196661, guid: de704a5904f0642e3b0114bb75e02ed7,
+        type: 3}
+      propertyPath: InitPiecePlaces.Array.data[0].PiecePrefab
+      value: 
+      objectReference: {fileID: 7776321754290631713, guid: ff50e3e5c8c8549559a494b54b7e12b2,
         type: 3}
     - target: {fileID: 465445291423679209, guid: de704a5904f0642e3b0114bb75e02ed7,
         type: 3}
@@ -1007,10 +1034,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Arrows:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 540372824}
+  - {fileID: 1901583910}
+  - {fileID: 1581926573}
+  - {fileID: 1547387071}
 --- !u!4 &1451568270
 Transform:
   m_ObjectHideFlags: 0
@@ -1036,6 +1063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: yazirusi (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814207708502289606, guid: 6dd0b8d7ba257481181abe7211afff43,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8400578621926743765, guid: 6dd0b8d7ba257481181abe7211afff43,
         type: 3}
@@ -1105,7 +1137,7 @@ PrefabInstance:
     - target: {fileID: 6484666452572217142, guid: 6dd0b8d7ba257481181abe7211afff43,
         type: 3}
       propertyPath: direction
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd0b8d7ba257481181abe7211afff43, type: 3}
@@ -1114,6 +1146,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8400578621926743765, guid: 6dd0b8d7ba257481181abe7211afff43,
     type: 3}
   m_PrefabInstance: {fileID: 1461270407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1547387071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4814207708502289606, guid: 6dd0b8d7ba257481181abe7211afff43,
+    type: 3}
+  m_PrefabInstance: {fileID: 1041008090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1581926573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4814207708502289606, guid: 6dd0b8d7ba257481181abe7211afff43,
+    type: 3}
+  m_PrefabInstance: {fileID: 763340331}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1644483095
 GameObject:
@@ -1335,6 +1379,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1901583910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4814207708502289606, guid: 6dd0b8d7ba257481181abe7211afff43,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461270407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1959598235
 GameObject:
   m_ObjectHideFlags: 0

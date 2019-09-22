@@ -36,14 +36,26 @@ public class Player : MonoBehaviour
                         }
                     
                 }
-                
-                    if (hit.collider.gameObject.tag == "plate")
-                    {
-                        BoardController.Instance.MovePiece(hit.collider.gameObject.transform);
-                    }
-                
 
+                if (hit.collider.gameObject.tag == "plate")
+                {
+                    BoardController.Instance.MovePiece(hit.collider.gameObject.transform);
+                }
 
+                if (hit.collider.gameObject.tag == "Arrow")
+                {
+                    RotateDirection rd = hit.collider.gameObject.GetComponent<RotateArrow>().direction;
+                    BoardController.Instance.Rotate(rd);
+                }
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                UIManager.Instance.ArrowAppear(true);
+            }
+            else
+            {
+                UIManager.Instance.ArrowAppear(false);
             }
         }
 
