@@ -898,6 +898,10 @@ MonoBehaviour:
   - {fileID: 2128461521}
   - {fileID: 628330703}
   - {fileID: 383130710}
+  gameNum: {fileID: 0}
+  turn: {fileID: 0}
+  p1Win: {fileID: 0}
+  p2Win: {fileID: 0}
 --- !u!4 &784754215
 Transform:
   m_ObjectHideFlags: 0

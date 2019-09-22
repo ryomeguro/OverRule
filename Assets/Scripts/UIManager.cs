@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     
     public GameObject[] Arrows;
 
+    [SerializeField] private SelectableImage gameNum, turn, p1Win, p2Win;
+
     void Awake()
     {
         Instance = this;
@@ -16,7 +18,9 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameNum.SetImage(GameInfo.gameNum - 1);
+        p1Win.SetImage(GameInfo.winNum[0]);
+        p2Win.SetImage(GameInfo.winNum[1]);
     }
 
     // Update is called once per frame
@@ -44,5 +48,10 @@ public class UIManager : MonoBehaviour
         {
             arrow.SetActive(isActive);
         }
+    }
+
+    public void PlayerChange(int playerID)
+    {
+        turn.SetImage(playerID);
     }
 }

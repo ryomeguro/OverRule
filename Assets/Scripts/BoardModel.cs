@@ -154,9 +154,18 @@ public class BoardModel : MonoBehaviour
             p.transform.rotation = tf.rotation;
             p.transform.parent = transform;
             p.playerID = ip.PlayerID;
+            SetPieceRim(p, 0);
 
             p.ID = currentId++;
         }
+    }
+    void SetPieceRim(Piece p, float value)
+    {
+        if(p == null)
+            return;
+
+        Transform obj = p.transform.GetChild(0);
+        obj.GetComponent<Renderer>().sharedMaterial.SetFloat("_UseRim", value);
     }
 
     public Vector3Int IDtoCoordinate(int ID)
