@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 30.0f))
             {
-                hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                //hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
                 BoardController.Instance.selectedPiece = hit.collider.gameObject.GetComponent<Piece>();
                 
                 // Debug.Log(selectedObject.transform.position);
