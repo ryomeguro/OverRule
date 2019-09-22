@@ -18,6 +18,14 @@ public class PieceViewer : MonoBehaviour
 
     public void Move(Transform plate)
     {
-        
+        transform.position = plate.position;
+        transform.rotation = plate.rotation;
+
+      
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
     }
 }
