@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
-  playerID: -1
+  playerID: 0
   movableSpots:
   - {x: 1, y: 0}
   - {x: 0, y: 1}

@@ -21,6 +21,7 @@ public class PieceViewer : MonoBehaviour
         transform.position = plate.position;
         transform.rotation = plate.rotation;
 
+       GameManager.Instance.PlayerChange();
       
     }
 
