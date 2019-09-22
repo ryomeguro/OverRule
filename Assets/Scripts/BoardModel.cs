@@ -153,6 +153,7 @@ public class BoardModel : MonoBehaviour
             p.transform.position = tf.position;
             p.transform.rotation = tf.rotation;
             p.transform.parent = transform;
+            p.playerID = ip.PlayerID;
 
             p.ID = currentId++;
         }
@@ -191,5 +192,41 @@ public class BoardModel : MonoBehaviour
                 }
             }
         }
+    }
+
+    public Vector3Int DropDirCalc()
+    {
+        Vector3[] poss =
+        {
+            plates[0, 1, 1].position,
+            plates[x + 1, 1, 1].position,
+            plates[1,0,1].position,
+            plates[1,y + 1,1].position,
+            plates[1,1,0].position,
+            plates[1,1,z + 1].position,
+        };
+
+        Vector3Int[] dropDirs =
+        {
+            Vector3Int.right,
+            Vector3Int.left,
+            Vector3Int.up,
+            Vector3Int.down,
+            new Vector3Int(0, 0, 1),
+            new Vector3Int(0, 0, -1),
+        };
+
+        int maxIndex = 0;
+        float maxY = poss[0].y;
+        for (int i = 1; i < poss.Length; i++)
+        {
+            if (poss[i].y > maxY)
+            {
+                maxIndex = i;
+                maxY = poss[i].y;
+            }
+        }
+        
+        return dropDirs[maxIndex];
     }
 }
