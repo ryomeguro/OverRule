@@ -98,4 +98,10 @@ public class BoardViewer : MonoBehaviour
         }
 
     }
+
+    public IEnumerator BoardRotate(Vector3 euler)
+    {
+        transform.Rotate(euler);
+        yield return null;
+    }
 }

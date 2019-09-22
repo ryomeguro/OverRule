@@ -6,6 +6,7 @@ TagManager:
   tags:
   - plate
   - piece
+  - Arrow
   layers:
   - Default
   - TransparentFX
