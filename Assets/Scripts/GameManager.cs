@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         if (GameInfo.winNum[0] == 2 || GameInfo.winNum[1] == 2)
         {
             SceneManager.LoadScene("ResultScene");
+            
         }
         else
         {
