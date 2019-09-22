@@ -7,6 +7,7 @@ public class BoardController : MonoBehaviour
     public static BoardController Instance;
 
     [SerializeField] BoardModel boardModel;
+    [SerializeField] BoardViewer boardViewer;
 
     //こまを選択したらここに入れる
     public Piece selectedPiece;
@@ -15,13 +16,20 @@ public class BoardController : MonoBehaviour
     {
         selectedPiece.transform.position = movePosition;
         selectedPiece.transform.eulerAngles = Rotation;
-       
-        Debug.Log(Rotation);
+
+        boardViewer.MovableDisplay(selectedPiece);
+
     }
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void SetSelectedPiece(Piece piece)
+    {
+        selectedPiece = piece;
+        boardViewer.MovableDisplay(selectedPiece);
     }
 
     // Start is called before the first frame update
