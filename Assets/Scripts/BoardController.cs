@@ -57,6 +57,7 @@ public class BoardController : MonoBehaviour
 
     IEnumerator RotateBoard()
     {
+        Debug.Log("BoardRotate:DataEdit");
         Vector3Int dropDir = boardModel.DropDirCalc();
         Vector3Int dDrop = dropDir * 2;
 
@@ -64,15 +65,17 @@ public class BoardController : MonoBehaviour
         Array.Copy(boardModel.pieces, op, boardModel.pieces.Length);
         
 
-        for (int i = 0; i < boardModel.x + 1; i++)
+        for (int i = 0; i < boardModel.x + 2; i++)
         {
-            for (int j = 0; j < boardModel.y + 1; j++)
+            for (int j = 0; j < boardModel.y + 2; j++)
             {
-                for (int k = 0; k < boardModel.z + 1; k++)
+                for (int k = 0; k < boardModel.z + 2; k++)
                 {
-                    if(op[i,j,k] == null)
+                    //そもそもピースがない場合
+                    if(boardModel.pieces[i,j,k] == null)
                         continue;
 
+                    //これ以上落ちない場合
                     try
                     {
                         if(boardModel.plates[i + dropDir.x , j + dropDir.y, k + dropDir.z] == null)
@@ -83,34 +86,54 @@ public class BoardController : MonoBehaviour
                         continue;
                     }
 
+                    Piece p = boardModel.pieces[i, j, k];
+
+                    Debug.Log("Edit!!:" + i + ":" + j + ":" + k);
+                    //その他
                     if (boardModel.pieces[i + dropDir.x, j + dropDir.y, k + dropDir.z] == null)
                     {
+                        //一つ下に何もない場合
                         if (boardModel.plates[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null)
                         {
-                            //2
+                            Debug.Log(p.name + ":2段目にある場合");
+                            //2 2段目にある場合
+                            DropPiece(p, i + dropDir.x, j + dropDir.y, k + dropDir.z);
                         }
                         else if (boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null)
                         {
-                            //1
+                            Debug.Log(p.name + ":3段目にある場合");
+                            //1　3段目にある場合
+                            DropPiece(p, i + dDrop.x, j + dDrop.y, k + dDrop.z);
                         }
                         else
                         {
                             if (op[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null)
                             {
-                                //3 先に落ちていた場合
+                                Debug.Log(p.name + ":２つ重なっていて先に落ちていた場合");
+                                //3 ２つ重なっていて先に落ちていた場合
+                                DropPiece(p, i + dropDir.x, j + dropDir.y, k + dropDir.z);
                             }
                             else
                             {
-                                //4
+                                Debug.Log(p.name + ":１つ空いていて落ちる場合");
+                                //4　１つ空いていて落ちる場合
+                                Piece dropPiece = boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z];
+                                dropPiece.GetComponent<PieceViewer>().Death();
+                                DropPiece(p, i + dDrop.x, j + dDrop.y, k + dDrop.z);
                             }
                         }
                     }
                     else
                     {
+                        //一つ下になにかがある場合
                         if (boardModel.plates[i + dDrop.x, j + dDrop.y, k + dDrop.z] != null &&
-                            boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z] != null)
+                            boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null )
                         {
-                            //3 先に落ちていない場合
+                            Debug.Log(p.name + ":２つ重なっていて先に落ちていない場合");
+                            //3 ２つ重なっていて先に落ちていない場合
+                            Piece movePiece = boardModel.pieces[i + dropDir.x, j + dropDir.y, k + dropDir.z];
+                            DropPiece(movePiece, i + dDrop.x, j + dDrop.y, k + dDrop.z);
+                            DropPiece(p, i + dropDir.x, j + dropDir.y, k + dropDir.z);
                         }
                     }
                     
@@ -149,11 +172,14 @@ public class BoardController : MonoBehaviour
         boardModel.pieces[pieceCoord.x, pieceCoord.y, pieceCoord.z] = null;
     }
 
-    void DropPieceData(Piece piece, int x, int y, int z)
+    void DropPiece(Piece piece, int x, int y, int z)
     {
+        Debug.Log("Drop!:" + piece.name);
         Vector3Int pieceCoord = boardModel.IDtoCoordinate(piece.ID);
         boardModel.pieces[x, y, z] = piece;
         boardModel.pieces[pieceCoord.x, pieceCoord.y, pieceCoord.z] = null;
+
+        piece.GetComponent<PieceViewer>().Move(boardModel.plates[x, y, z]);
     }
 
 }

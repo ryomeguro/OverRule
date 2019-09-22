@@ -26,6 +26,12 @@ public class PieceViewer : MonoBehaviour
       
     }
 
+    public void Drop(Transform plate)
+    {
+        transform.position = plate.position;
+        transform.rotation = plate.rotation;
+    }
+
     public void Death()
     {
         if (piece.isKing)
