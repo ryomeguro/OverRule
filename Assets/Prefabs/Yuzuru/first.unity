@@ -242,6 +242,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _p: {fileID: 0}
+--- !u!114 &331250563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331250559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f726cbfa371294490d173826627acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 2
 --- !u!1 &345453101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1151,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630012560869196661, guid: de704a5904f0642e3b0114bb75e02ed7,
+        type: 3}
+      propertyPath: InitPiecePlaces.Array.data[3].PlayerID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630012560869196661, guid: de704a5904f0642e3b0114bb75e02ed7,
+        type: 3}
+      propertyPath: InitPiecePlaces.Array.data[4].PlayerID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630012560869196661, guid: de704a5904f0642e3b0114bb75e02ed7,
+        type: 3}
+      propertyPath: InitPiecePlaces.Array.data[5].PlayerID
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de704a5904f0642e3b0114bb75e02ed7, type: 3}

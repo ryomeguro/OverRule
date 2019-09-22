@@ -152,6 +152,7 @@ public class BoardModel : MonoBehaviour
             Debug.Log(pieces[ip.x, ip.y, ip.z] + ":" + plates[ip.x, ip.y, ip.z]);
             p.transform.position = tf.position;
             p.transform.rotation = tf.rotation;
+            p.transform.parent = transform;
 
             p.ID = currentId++;
         }

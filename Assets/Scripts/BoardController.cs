@@ -18,6 +18,7 @@ public class BoardController : MonoBehaviour
         MovePieceData(selectedPiece, plate.GetComponent<Plate>());
         
         boardViewer.MovableDisplay(selectedPiece);
+        SetSelectedPiece(null);
 
     }
 
@@ -30,6 +31,7 @@ public class BoardController : MonoBehaviour
     {
         selectedPiece = piece;
         boardViewer.MovableDisplay(selectedPiece);
+
     }
 
     void MovePieceData(Piece piece, Plate plate)
@@ -39,7 +41,7 @@ public class BoardController : MonoBehaviour
         
         if (currentToPlacePiece != null)
         {
-            //currentToPlacePiece.GetComponent<PieceViewer>().death();
+            currentToPlacePiece.GetComponent<PieceViewer>().Death();
         }
 
         boardModel.pieces[plate.x, plate.y, plate.z] = piece;
