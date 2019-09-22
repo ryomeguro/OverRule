@@ -1,17 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Piece : MonoBehaviour
+public class ResultManager : MonoBehaviour
 {
-
-    public int ID = -1;
-    public int playerID = -1;
-
-    public Vector2Int[] movableSpots;
-
-    public bool isKing = false;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +16,9 @@ public class Piece : MonoBehaviour
     {
         
     }
-}
 
-//
+    public void GoToTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+}
