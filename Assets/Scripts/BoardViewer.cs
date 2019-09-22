@@ -57,7 +57,7 @@ public class BoardViewer : MonoBehaviour
             foreach (var dir in dirs)
             {
                 Vector3Int d3 = pcoord + new Vector3Int(0, dir.x, dir.y);
-                if (d3.y == 0 || d3.y == _boardModel.y + 1 || d3.z == 0 || d3.z == _boardModel.z)
+                if (d3.y == 0 || d3.y == _boardModel.y + 1 || d3.z == 0 || d3.z == _boardModel.z + 1)
                     d3 += overflow;
                 dirs3D.Add(d3);
             }
@@ -68,7 +68,7 @@ public class BoardViewer : MonoBehaviour
             foreach (var dir in dirs)
             {
                 Vector3Int d3 = pcoord + new Vector3Int(dir.x, 0, dir.y);
-                if (d3.x == 0 || d3.x == _boardModel.x + 1 || d3.z == 0 || d3.z == _boardModel.z)
+                if (d3.x == 0 || d3.x == _boardModel.x + 1 || d3.z == 0 || d3.z == _boardModel.z + 1)
                     d3 += overflow;
                 dirs3D.Add(d3);
             }
@@ -79,7 +79,7 @@ public class BoardViewer : MonoBehaviour
             foreach (var dir in dirs)
             {
                 Vector3Int d3 = pcoord + new Vector3Int(dir.x, dir.y, 0);
-                if (d3.x == 0 || d3.x == _boardModel.x + 1 || d3.y == 0 || d3.y == _boardModel.y)
+                if (d3.x == 0 || d3.x == _boardModel.x + 1 || d3.y == 0 || d3.y == _boardModel.y + 1)
                     d3 += overflow;
                 dirs3D.Add(d3);
             }
@@ -91,7 +91,9 @@ public class BoardViewer : MonoBehaviour
             Debug.Log(d3);
             if (plate != null)
             {
-                plate.gameObject.SetActive(true);
+                Piece placeP = _boardModel.pieces[d3.x, d3.y, d3.z];
+                if(placeP == null || placeP.ID != piece.ID)
+                    plate.gameObject.SetActive(true);
             }
         }
 
