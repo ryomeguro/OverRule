@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5343895105448993910}
   - component: {fileID: 5039825604691989109}
+  - component: {fileID: 4657595139011114672}
   m_Layer: 0
   m_Name: King
   m_TagString: Untagged
@@ -46,7 +47,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: -1
   playerID: -1
-  movableSpots: []
+  movableSpots:
+  - {x: 1, y: 0}
+  - {x: 0, y: 1}
+  - {x: -1, y: 0}
+  - {x: 0, y: -1}
+  - {x: 1, y: 1}
+  - {x: -1, y: 1}
+  - {x: 1, y: -1}
+  - {x: -1, y: -1}
+--- !u!114 &4657595139011114672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347224174277780408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4f128b5b8284c7bb7c41cf771d1047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4433921072535683859
 GameObject:
   m_ObjectHideFlags: 0
