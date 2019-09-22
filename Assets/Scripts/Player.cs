@@ -16,14 +16,21 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
+     
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 30.0f))
             {
                 //hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                BoardController.Instance.selectedPiece = hit.collider.gameObject.GetComponent<Piece>();
-                
+                if (hit.collider.gameObject.tag == "piece")
+                {
+                    //BoardController.Instance.selectedPiece = hit.collider.gameObject.GetComponent<Piece>();
+                    BoardController.Instance.SetSelectedPiece(hit.collider.gameObject.GetComponent<Piece>());
+                }
+                if (hit.collider.gameObject.tag == "plate")
+                {
+                    BoardController.Instance.MovePiece(hit.collider.gameObject.transform.position, hit.collider.gameObject.transform.eulerAngles);
+                }
                 // Debug.Log(selectedObject.transform.position);
             }
         }
@@ -35,8 +42,7 @@ public class Player : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 30.0f))
             {
-                BoardController.Instance.MovePiece(hit.collider.gameObject.transform.position,hit.collider.gameObject.transform.eulerAngles);
-                //Debug.Log(hit.collider.gameObject.transform.position);
+               Debug.Log(hit.collider.gameObject);
             }
         }
     }
