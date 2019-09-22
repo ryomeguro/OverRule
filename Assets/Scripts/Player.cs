@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         if (Input.GetMouseButtonDown(0))
         {
      
@@ -26,8 +28,7 @@ public class Player : MonoBehaviour
                 if (hit.collider.gameObject.tag == "piece")
                 {
                     Piece piece=hit.collider.gameObject.GetComponent<Piece>();
-                    Debug.Log(piece.name);
-                
+                    
                         if (GameManager.Instance.CurrentPlayerID == piece.playerID)
                         {
                             //BoardController.Instance.selectedPiece = hit.collider.gameObject.GetComponent<Piece>();
@@ -35,14 +36,12 @@ public class Player : MonoBehaviour
                         }
                     
                 }
-
-                //foreach (RaycastHit hitall in Physics.RaycastAll(ray))
-                //{
+                
                     if (hit.collider.gameObject.tag == "plate")
                     {
                         BoardController.Instance.MovePiece(hit.collider.gameObject.transform);
                     }
-                //}
+                
 
 
             }
