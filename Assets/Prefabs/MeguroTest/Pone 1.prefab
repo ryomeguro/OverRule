@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2986803691177546103}
   - component: {fileID: 344235201178948084}
   - component: {fileID: 5054717946896460715}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bbbfdc889ee304b9190f80f5f00e96e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,8 +90,8 @@ GameObject:
   - component: {fileID: -6081796489114583498}
   - component: {fileID: 6054345214110485552}
   - component: {fileID: 3963708369130239772}
-  m_Layer: 8
-  m_Name: Pone
+  m_Layer: 9
+  m_Name: Pone 1
   m_TagString: piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

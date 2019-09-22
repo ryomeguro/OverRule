@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
                 if (hit.collider.gameObject.tag == "piece")
                 {
                     Piece piece=hit.collider.gameObject.GetComponent<Piece>();
+                    Debug.Log(piece.name);
                 
                         if (GameManager.Instance.CurrentPlayerID == piece.playerID)
                         {
@@ -35,13 +36,13 @@ public class Player : MonoBehaviour
                     
                 }
 
-                foreach (RaycastHit hitall in Physics.RaycastAll(ray))
-                {
-                    if (hitall.collider.gameObject.tag == "plate")
+                //foreach (RaycastHit hitall in Physics.RaycastAll(ray))
+                //{
+                    if (hit.collider.gameObject.tag == "plate")
                     {
                         BoardController.Instance.MovePiece(hit.collider.gameObject.transform);
                     }
-                }
+                //}
 
 
             }

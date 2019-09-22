@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5039825604691989109}
   - component: {fileID: 4657595139011114672}
   - component: {fileID: 1792927930097351408}
-  m_Layer: 8
-  m_Name: King
+  m_Layer: 9
+  m_Name: King 1
   m_TagString: piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4219964202055995365}
   - component: {fileID: 2450567785326442082}
   - component: {fileID: 9103214386512901064}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bbbfdc889ee304b9190f80f5f00e96e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -88,7 +88,7 @@ public class BoardViewer : MonoBehaviour
         foreach (var d3 in dirs3D)
         {
             Transform plate = _boardModel.plates[d3.x, d3.y, d3.z];
-            Debug.Log(d3);
+            //Debug.Log(d3);
             if (plate != null)
             {
                 Piece placeP = _boardModel.pieces[d3.x, d3.y, d3.z];
