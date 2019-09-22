@@ -152,9 +152,19 @@ public class BoardController : MonoBehaviour
 
     public void SetSelectedPiece(Piece piece)
     {
+        SetPieceRim(selectedPiece, 0);
         selectedPiece = piece;
+        SetPieceRim(selectedPiece, 1);
         boardViewer.MovableDisplay(selectedPiece);
+    }
 
+    void SetPieceRim(Piece p, float value)
+    {
+        if(p == null)
+            return;
+
+        Transform obj = p.transform.GetChild(0);
+        obj.GetComponent<Renderer>().sharedMaterial.SetFloat("_UseRim", value);
     }
 
     void MovePieceData(Piece piece, Plate plate)

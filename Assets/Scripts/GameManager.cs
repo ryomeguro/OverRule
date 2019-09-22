@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public void PlayerChange()
     {
         CurrentPlayerID = (CurrentPlayerID + 1) % 2;
+        UIManager.Instance.PlayerChange(CurrentPlayerID);
         //CurrentPlayerID = 0;
     }
     
