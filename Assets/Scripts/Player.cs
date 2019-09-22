@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
                 }
                 if (hit.collider.gameObject.tag == "plate")
                 {
-                    BoardController.Instance.MovePiece(hit.collider.gameObject.transform.position, hit.collider.gameObject.transform.eulerAngles);
+                    BoardController.Instance.MovePiece(hit.collider.gameObject.transform);
                 }
                 // Debug.Log(selectedObject.transform.position);
             }

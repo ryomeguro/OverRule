@@ -12,10 +12,11 @@ public class BoardController : MonoBehaviour
     //こまを選択したらここに入れる
     public Piece selectedPiece;
     //rotationも合わせる
-    public void MovePiece(Vector3 movePosition,Vector3 Rotation)
+    public void MovePiece(Transform plate)
     {
-        selectedPiece.transform.position = movePosition;
-        selectedPiece.transform.eulerAngles = Rotation;
+        //selectedPiece.transform.position = movePosition;
+        //selectedPiece.transform.eulerAngles = Rotation;
+        selectedPiece.GetComponent<PieceViewer>().Move(plate);
 
         boardViewer.MovableDisplay(selectedPiece);
 

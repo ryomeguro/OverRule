@@ -16,7 +16,7 @@ public class PieceViewer : MonoBehaviour
         
     }
 
-    public void Move()
+    public void Move(Transform plate)
     {
         
     }
