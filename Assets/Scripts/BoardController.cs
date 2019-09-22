@@ -14,10 +14,9 @@ public class BoardController : MonoBehaviour
     //rotationも合わせる
     public void MovePiece(Transform plate)
     {
-        //selectedPiece.transform.position = movePosition;
-        //selectedPiece.transform.eulerAngles = Rotation;
         selectedPiece.GetComponent<PieceViewer>().Move(plate);
-
+        MovePieceData(selectedPiece, plate.GetComponent<Plate>());
+        
         boardViewer.MovableDisplay(selectedPiece);
 
     }
@@ -33,16 +32,18 @@ public class BoardController : MonoBehaviour
         boardViewer.MovableDisplay(selectedPiece);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void MovePieceData(Piece piece, Plate plate)
     {
+        Piece currentToPlacePiece = boardModel.pieces[plate.x, plate.y, plate.z];
+        Vector3Int pieceCoord = boardModel.IDtoCoordinate(piece.ID);
+        
+        if (currentToPlacePiece != null)
+        {
+            //currentToPlacePiece.GetComponent<PieceViewer>().death();
+        }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        boardModel.pieces[plate.x, plate.y, plate.z] = piece;
+        boardModel.pieces[pieceCoord.x, pieceCoord.y, pieceCoord.z] = null;
     }
 
 }
