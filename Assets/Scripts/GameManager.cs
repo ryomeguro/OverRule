@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,5 +30,26 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void GameStart()
+    {
+        
+    }
+
+    public void GameEnd(int rosePlayerID)
+    {
+        GameInfo.gameNum++;
+        int winPlayerID = (rosePlayerID + 1) % 2;
+        GameInfo.winNum[winPlayerID]++;
+
+        if (GameInfo.winNum[0] == 2 || GameInfo.winNum[1] == 2)
+        {
+            SceneManager.LoadScene("ResultScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("GameScene");
+        }
     }
 }
