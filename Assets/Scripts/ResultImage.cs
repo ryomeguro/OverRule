@@ -11,15 +11,28 @@ public class ResultImage : MonoBehaviour
     void Start()
     {
         image = this.GetComponent<Image>();
-        
-        if(GameInfo.winNum[0]< GameInfo.winNum[1])
-        {
-            image.sprite = Sprite[0];
+        if (this.gameObject.layer == 8) {
+            image.sprite = Sprite[GameInfo.winNum[0]];
         }
-        else
+        else if(this.gameObject.layer==9)
         {
-            image.sprite = Sprite[1];
+            image.sprite = Sprite[GameInfo.winNum[1]];
         }
+        else {
+            if (GameInfo.winNum[0] < GameInfo.winNum[1])
+            {
+                image.sprite = Sprite[0];
+            }
+            else
+            {
+                image.sprite = Sprite[1];
+            }
+
+        }
+
+
+
+
 
     }
 
