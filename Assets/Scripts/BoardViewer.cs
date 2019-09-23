@@ -108,7 +108,7 @@ public class BoardViewer : MonoBehaviour
 
     public IEnumerator BoardRotate(Vector3 euler)
     {
-        float duration = 0.5f;
+        float duration = 2f;
         Vector3 angleSpeed = euler / duration;
         Quaternion origin = transform.rotation;
         

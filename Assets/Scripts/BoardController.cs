@@ -27,6 +27,7 @@ public class BoardController : MonoBehaviour
     {
         SetSelectedPiece(null);
         StartCoroutine(RotateSequence(direction));
+        GameManager.Instance.WinCheck();
     }
 
     IEnumerator RotateSequence(RotateDirection direction)
