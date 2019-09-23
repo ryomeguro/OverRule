@@ -7,7 +7,8 @@ public enum RotateDirection
     FORWARD,
     BACK,
     LEFT,
-    RIGHT
+    RIGHT,
+    NONE
 };
 
 public class RotateArrow : MonoBehaviour
