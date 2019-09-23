@@ -17,50 +17,50 @@ public class PieceViewer : MonoBehaviour
         
     }
 
-    private Vector3 movevector;
-    private Vector3 targetposition;
-    private Vector3 direction;
-
     public void Move(Transform plate)
     {
-
-        targetposition = plate.transform.position;
-        direction = targetposition - transform.position;
-        movevector = (targetposition - transform.position)/20;
-        //transform.forward=direction - transform.forward;
-        //transform.forward = movevector;
-
-        StartCoroutine("Sample");
+        float duration = 2.0f;
+        StartCoroutine(MoveSequence(duration, plate));
         
-        iTween.RotateTo(this.gameObject,iTween.Hash(
-            "x",plate.transform.eulerAngles.x,
-            "y", plate.transform.eulerAngles.y,
-            "z", plate.transform.eulerAngles.z,
-            "time",2.0f)
-            );
-        
-            
         //transform.Rotate(90, 0, 0);
         //Debug.Log(this.transform.forward);
-        Debug.Log(direction);
+        //Debug.Log(direction);
         GameManager.Instance.PlayerChange();
       
     }
 
-    private IEnumerator Sample()
+    private IEnumerator MoveSequence(float duration, Transform plate)
     {
+        iTween.RotateTo(this.gameObject,iTween.Hash(
+            "x",plate.transform.eulerAngles.x,
+            "y", plate.transform.eulerAngles.y,
+            "z", plate.transform.eulerAngles.z,
+            "time",duration)
+        );
+        
+        
+        Vector3 targetPosition = plate.position;
+        Vector3 vel = (targetPosition - transform.position) / duration;
 
-        while (transform.position != targetposition)
+        Quaternion targetAngle = plate.rotation;
+        //Quaternion 
+        
+        float currentTime = 0;
+        while (currentTime < duration)
         {
-            transform.position += movevector;
-            yield return new WaitForSeconds(0.05f);
+            transform.position += vel * Time.deltaTime;
+            currentTime += Time.deltaTime;
+            yield return null;
         }
     }
 
     public void Drop(Transform plate)
     {
-        transform.position = plate.position;
-        transform.rotation = plate.rotation;
+        //transform.position = plate.position;
+        //transform.rotation = plate.rotation;
+        
+        float duration = 1.0f;
+        StartCoroutine(MoveSequence(duration, plate));
     }
 
     public void Death()
@@ -69,6 +69,31 @@ public class PieceViewer : MonoBehaviour
         {
             GameManager.Instance.GameEnd(piece.playerID);
         }
+        Destroy(gameObject);
+    }
+
+    public void DropDeath()
+    {
+        StartCoroutine(DropDeathSequence());
+    }
+
+    IEnumerator DropDeathSequence()
+    {
+        Vector3 speed = Vector3.down * 2f;
+        float duration = 5f;
+        float currentTime = 0f;
+
+        GetComponent<Collider>().enabled = false;
+
+        yield return new WaitForSeconds(1f);
+        
+        while (currentTime < duration)
+        {
+            transform.position += speed * Time.deltaTime;
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 }
