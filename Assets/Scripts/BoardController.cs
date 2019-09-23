@@ -123,7 +123,8 @@ public class BoardController : MonoBehaviour
                                 Debug.Log(p.name + ":１つ空いていて落ちる場合");
                                 //4　１つ空いていて落ちる場合
                                 Piece dropPiece = boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z];
-                                dropPiece.GetComponent<PieceViewer>().Death();
+                                //dropPiece.GetComponent<PieceViewer>().Death();
+                                dropPiece.GetComponent<PieceViewer>().DropDeath();
                                 
                                 //DropPiece(p, i + dDrop.x, j + dDrop.y, k + dDrop.z);
                                 DropPiece(p, i + dropDir.x, j + dropDir.y, k + dropDir.z);
