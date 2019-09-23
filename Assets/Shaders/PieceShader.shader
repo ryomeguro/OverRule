@@ -7,6 +7,7 @@
         _MetallicTex("MetallicTex", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+        _NormalMap("NormalMap", 2D) = "bump"{}
         _EmissionTexture("EmissionTexture", 2D) = "black" {}
         [HDR] _EmissionColor("EmissionColor", Color) = (0,0,0)
         _RimColor("RimColor", Color) = (1,0,0,1)
@@ -28,6 +29,7 @@
         sampler2D _MainTex;
         sampler2D _EmissionTexture;
         sampler2D _MetallicTex;
+        sampler2D _NormalMap;
 
         struct Input
         {
@@ -56,10 +58,15 @@
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
+            fixed4 metalic = tex2D (_MetallicTex, IN.uv_MainTex);
             // Metallic and smoothness come from slider variables
-            o.Metallic = tex2D (_MetallicTex, IN.uv_MainTex) * _Metallic;
+            o.Metallic = metalic.r * _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
+            
+            fixed4 normTex = tex2D(_NormalMap, IN.uv_MainTex);
+            o.Normal = UnpackNormal(normTex);
+            
             o.Emission += tex2D (_EmissionTexture, IN.uv_MainTex) * _EmissionColor;
             
             float rim = 1 - saturate(dot(IN.viewDir, o.Normal));
