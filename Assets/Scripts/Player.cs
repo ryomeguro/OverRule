@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
                         {
                             //BoardController.Instance.selectedPiece = hit.collider.gameObject.GetComponent<Piece>();
                             BoardController.Instance.SetSelectedPiece(hit.collider.gameObject.GetComponent<Piece>());
+
+                        //チョイスSE
+                        Audio.Instance.audiosource.PlayOneShot(Audio.Instance.audioclip[1]);
                         }
                     
                 }
@@ -40,11 +43,17 @@ public class Player : MonoBehaviour
                 if (hit.collider.gameObject.tag == "plate")
                 {
                     BoardController.Instance.MovePiece(hit.collider.gameObject.transform);
+
+                    //置くSE
+                    Audio.Instance.audiosource.PlayOneShot(Audio.Instance.audioclip[1]);
                 }
 
                 if (hit.collider.gameObject.tag == "Arrow")
                 {
                     RotateDirection rd = hit.collider.gameObject.GetComponent<RotateArrow>().direction;
+
+                    //回転SE
+                    Audio.Instance.audiosource.PlayOneShot(Audio.Instance.audioclip[0]);
                     //BoardController.Instance.Rotate(rd);
                     GameManager.Instance.UseRotate(rd);
                 }
