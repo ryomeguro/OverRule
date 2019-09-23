@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class UIManager : MonoBehaviour
     public GameObject[] Arrows;
 
     [SerializeField] private SelectableImage gameNum, turn, p1Win, p2Win;
+
+    [SerializeField] private Image[] turnImages;
+    [SerializeField] private SelectableImage turnPlayer;
 
     void Awake()
     {
@@ -53,5 +58,62 @@ public class UIManager : MonoBehaviour
     public void PlayerChange(int playerID)
     {
         turn.SetImage(playerID);
+        StartCoroutine(PlayerChangeSequence(playerID));
+    }
+
+    IEnumerator PlayerChangeSequence(int playerID)
+    {
+        turnPlayer.SetImage(playerID);
+        
+        float duration = 0.5f;
+        float maxA = 0.8f;
+
+        float currentTime = duration;
+        
+        while (currentTime > 0)
+        {
+            foreach (var img in turnImages)
+            {
+                img.color = new Color(1, 1, 1, Mathf.Max(0, maxA * (1 - currentTime / duration)));
+            }
+
+            yield return null;
+            currentTime -= Time.deltaTime;
+        }
+        
+        yield return new WaitForSeconds(1f);
+        
+        duration = 1f;
+        currentTime = duration;
+        while (currentTime > 0)
+        {
+            foreach (var img in turnImages)
+            {
+                img.color = new Color(1, 1, 1, Mathf.Max(0, maxA * currentTime / duration));
+            }
+
+            yield return null;
+            currentTime -= Time.deltaTime;
+        }
+        
+        foreach (var img in turnImages)
+        {
+            img.color = new Color(1, 1, 1, 0);
+        }
+    }
+
+    public void ChangeArrowColor(int power)
+    {
+        Material arrowMat = Arrows[0].GetComponent<Renderer>().sharedMaterial;
+        if (power == 1)
+        {
+            //arrowMat.SetColor("_MainColor", new Color(1,0,0,1));
+            arrowMat.color = new Color(1, 0, 0, 1);
+        }
+        else
+        {
+            arrowMat.SetColor("_MainColor", new Color(1,1,1,0));
+            arrowMat.color = new Color(1, 1, 1, 0);
+        }
     }
 }
