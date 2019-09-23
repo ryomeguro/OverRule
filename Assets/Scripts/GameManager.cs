@@ -18,16 +18,20 @@ public class GameManager : MonoBehaviour
 
     public void PlayerChange()
     {
+        Debug.Log("Change!");
         CurrentPlayerID = (CurrentPlayerID + 1) % 2;
         UIManager.Instance.PlayerChange(CurrentPlayerID);
 
         rotatePower[CurrentPlayerID] = 1;
+        UIManager.Instance.ChangeArrowColor(rotatePower[CurrentPlayerID]);
     }
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        CurrentPlayerID = (GameInfo.gameNum + 1) % 2;
+        UIManager.Instance.PlayerChange(CurrentPlayerID);
+        UIManager.Instance.ChangeArrowColor(rotatePower[CurrentPlayerID]);
     }
 
     // Update is called once per frame
@@ -38,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     void GameStart()
     {
-        
+        UIManager.Instance.ChangeArrowColor(rotatePower[CurrentPlayerID]);
     }
 
     public void GameEnd(int rosePlayerID)
@@ -68,5 +72,6 @@ public class GameManager : MonoBehaviour
 
         rotatePower[CurrentPlayerID]--;
         BoardController.Instance.Rotate(rd);
+        UIManager.Instance.ChangeArrowColor(rotatePower[CurrentPlayerID]);
     }
 }
