@@ -8,13 +8,14 @@ public class mouseMove : MonoBehaviour
     private Ray ray;
 
     private Vector3 targetposition;
+    private Vector3 movedistance;
     
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
         
     }
 
@@ -26,12 +27,15 @@ public class mouseMove : MonoBehaviour
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100f))
             {
-                targetposition = hit.point;
+                targetposition = hit.transform.position;
+                movedistance = (targetposition - transform.position)/100; 
+               
+                //Debug.Log(hit.transform.position);
                 
 
             }
         }
-        if (transform.position != moveposition)
+        if (transform.position != targetposition)
         {
             transform.position += movedistance;
         }
