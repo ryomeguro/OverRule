@@ -25,6 +25,7 @@ public class BoardController : MonoBehaviour
 
     public void Rotate(RotateDirection direction)
     {
+        SetSelectedPiece(null);
         StartCoroutine(RotateSequence(direction));
     }
 
@@ -189,7 +190,7 @@ public class BoardController : MonoBehaviour
         boardModel.pieces[x, y, z] = piece;
         boardModel.pieces[pieceCoord.x, pieceCoord.y, pieceCoord.z] = null;
 
-        piece.GetComponent<PieceViewer>().Move(boardModel.plates[x, y, z]);
+        piece.GetComponent<PieceViewer>().Drop(boardModel.plates[x, y, z]);
     }
 
 }

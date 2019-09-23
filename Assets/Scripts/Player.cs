@@ -45,7 +45,8 @@ public class Player : MonoBehaviour
                 if (hit.collider.gameObject.tag == "Arrow")
                 {
                     RotateDirection rd = hit.collider.gameObject.GetComponent<RotateArrow>().direction;
-                    BoardController.Instance.Rotate(rd);
+                    //BoardController.Instance.Rotate(rd);
+                    GameManager.Instance.UseRotate(rd);
                 }
             }
 
