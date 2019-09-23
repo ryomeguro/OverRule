@@ -87,13 +87,20 @@ public class BoardViewer : MonoBehaviour
 
         foreach (var d3 in dirs3D)
         {
-            Transform plate = _boardModel.plates[d3.x, d3.y, d3.z];
-            //Debug.Log(d3);
-            if (plate != null)
+            try
             {
-                Piece placeP = _boardModel.pieces[d3.x, d3.y, d3.z];
-                if(placeP == null || placeP.playerID != piece.playerID)
-                    plate.gameObject.SetActive(true);
+                Transform plate = _boardModel.plates[d3.x, d3.y, d3.z];
+                //Debug.Log(d3);
+                if (plate != null)
+                {
+                    Piece placeP = _boardModel.pieces[d3.x, d3.y, d3.z];
+                    if (placeP == null || placeP.playerID != piece.playerID)
+                        plate.gameObject.SetActive(true);
+                }
+            }
+            catch
+            {
+                
             }
         }
 

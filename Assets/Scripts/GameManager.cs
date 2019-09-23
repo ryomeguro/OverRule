@@ -55,17 +55,24 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd(int rosePlayerID)
     {
+        StartCoroutine(GameEndSequence(rosePlayerID));
+    }
+
+    IEnumerator GameEndSequence(int rosePlayerID)
+    {
         GameInfo.gameNum++;
         int winPlayerID = (rosePlayerID + 1) % 2;
         GameInfo.winNum[winPlayerID]++;
 
         if (GameInfo.winNum[0] == 2 || GameInfo.winNum[1] == 2)
         {
+            yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("ResultScene");
             
         }
         else
         {
+            yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("GameScene");
         }
     }
