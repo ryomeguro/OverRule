@@ -94,33 +94,39 @@ public class BoardController : MonoBehaviour
                     if (boardModel.pieces[i + dropDir.x, j + dropDir.y, k + dropDir.z] == null)
                     {
                         //一つ下に何もない場合
-                        if (boardModel.plates[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null)
+                        if (boardModel.plates[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null &&
+                            op[i,j,k] != null)
                         {
                             Debug.Log(p.name + ":2段目にある場合");
                             //2 2段目にある場合
                             DropPiece(p, i + dropDir.x, j + dropDir.y, k + dropDir.z);
                         }
-                        else if (boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null)
+                        else if (boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null &&
+                                 boardModel.plates[i + dDrop.x, j + dDrop.y, k + dDrop.z] != null)
                         {
                             Debug.Log(p.name + ":3段目にある場合");
                             //1　3段目にある場合
-                            DropPiece(p, i + dDrop.x, j + dDrop.y, k + dDrop.z);
+                            //DropPiece(p, i + dDrop.x, j + dDrop.y, k + dDrop.z);
+                            DropPiece(p, i + dropDir.x, j + dropDir.y, k + dropDir.z);
                         }
                         else
                         {
-                            if (op[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null)
+                            if (op[i + dDrop.x, j + dDrop.y, k + dDrop.z] == null &&
+                                /*追加*/op[i,j,k] != null)
                             {
                                 Debug.Log(p.name + ":２つ重なっていて先に落ちていた場合");
                                 //3 ２つ重なっていて先に落ちていた場合
                                 DropPiece(p, i + dropDir.x, j + dropDir.y, k + dropDir.z);
                             }
-                            else
+                            else if(boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z] != null)
                             {
                                 Debug.Log(p.name + ":１つ空いていて落ちる場合");
                                 //4　１つ空いていて落ちる場合
                                 Piece dropPiece = boardModel.pieces[i + dDrop.x, j + dDrop.y, k + dDrop.z];
                                 dropPiece.GetComponent<PieceViewer>().Death();
-                                DropPiece(p, i + dDrop.x, j + dDrop.y, k + dDrop.z);
+                                
+                                //DropPiece(p, i + dDrop.x, j + dDrop.y, k + dDrop.z);
+                                DropPiece(p, i + dropDir.x, j + dropDir.y, k + dropDir.z);
                             }
                         }
                     }

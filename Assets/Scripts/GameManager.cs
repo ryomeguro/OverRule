@@ -37,7 +37,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PlayerChange();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            BoardController.Instance.Rotate(RotateDirection.NONE);
+        }
     }
 
     void GameStart()
