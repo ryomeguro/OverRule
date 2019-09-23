@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public int CurrentPlayerID { get; private set; }
+
+    private int[] rotatePower = {1, 1};
     
     void Awake()
     {
@@ -18,7 +20,8 @@ public class GameManager : MonoBehaviour
     {
         CurrentPlayerID = (CurrentPlayerID + 1) % 2;
         UIManager.Instance.PlayerChange(CurrentPlayerID);
-        //CurrentPlayerID = 0;
+
+        rotatePower[CurrentPlayerID] = 1;
     }
     
     // Start is called before the first frame update
@@ -53,5 +56,17 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("GameScene");
         }
+    }
+
+    public void UseRotate(RotateDirection rd)
+    {
+        if (rotatePower[CurrentPlayerID] < 1)
+        {
+            Debug.Log("このターンではもう回転できません。");
+            return;
+        }
+
+        rotatePower[CurrentPlayerID]--;
+        BoardController.Instance.Rotate(rd);
     }
 }
