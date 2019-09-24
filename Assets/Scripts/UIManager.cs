@@ -11,10 +11,12 @@ public class UIManager : MonoBehaviour
     
     public GameObject[] Arrows;
 
-    [SerializeField] private SelectableImage gameNum, turn, p1Win, p2Win;
+    [SerializeField] private SelectableImage gameNum, Nsurfix, turn, p1Win, p2Win;
 
     [SerializeField] private Image[] turnImages;
     [SerializeField] private SelectableImage turnPlayer;
+
+    [SerializeField] private MoviePlay[] moviePlays;
 
     void Awake()
     {
@@ -24,6 +26,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         gameNum.SetImage(GameInfo.gameNum - 1);
+        Nsurfix.SetImage(GameInfo.gameNum - 1);
         p1Win.SetImage(GameInfo.winNum[0]);
         p2Win.SetImage(GameInfo.winNum[1]);
     }
@@ -115,5 +118,11 @@ public class UIManager : MonoBehaviour
             arrowMat.SetColor("_MainColor", new Color(1,1,1,0));
             arrowMat.color = new Color(1, 1, 1, 0);
         }
+    }
+
+    public void WinMoviePlay(int winPlayerID)
+    {
+        Debug.Log("Win:" + winPlayerID);
+        moviePlays[winPlayerID].gameObject.SetActive(true);
     }
 }

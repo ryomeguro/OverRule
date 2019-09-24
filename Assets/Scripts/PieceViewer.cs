@@ -20,16 +20,16 @@ public class PieceViewer : MonoBehaviour
     public void Move(Transform plate)
     {
         float duration = 2.0f;
-        StartCoroutine(MoveSequence(duration, plate));
+        StartCoroutine(MoveSequence(duration, plate, true));
         
         //transform.Rotate(90, 0, 0);
         //Debug.Log(this.transform.forward);
         //Debug.Log(direction);
-        GameManager.Instance.PlayerChange();
+        //GameManager.Instance.PlayerChange();
       
     }
 
-    private IEnumerator MoveSequence(float duration, Transform plate)
+    private IEnumerator MoveSequence(float duration, Transform plate, bool canPlayerChange)
     {
         iTween.RotateTo(this.gameObject,iTween.Hash(
             "x",plate.transform.eulerAngles.x,
@@ -52,6 +52,9 @@ public class PieceViewer : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null;
         }
+
+        if (canPlayerChange)
+            GameManager.Instance.PlayerChange();
     }
 
     public void Drop(Transform plate)
@@ -60,21 +63,36 @@ public class PieceViewer : MonoBehaviour
         //transform.rotation = plate.rotation;
         
         float duration = 1.0f;
-        StartCoroutine(MoveSequence(duration, plate));
+        StartCoroutine(MoveSequence(duration, plate, false));
     }
 
     public void Death()
     {
+        int damagePoint = 1;
         if (piece.isKing)
         {
-            GameManager.Instance.GameEnd(piece.playerID);
+            //GameManager.Instance.GameEnd(piece.playerID);
+            damagePoint = 5;
         }
+
+        GameManager.Instance.AddDamage(damagePoint, piece.playerID);
         Destroy(gameObject);
     }
 
     public void DropDeath()
     {
+        int damagePoint = 1;
+        if (piece.isKing)
+        {
+            //GameManager.Instance.GameEnd(piece.playerID);
+            damagePoint = 5;
+        }
+
+        GameManager.Instance.AddDamage(damagePoint, piece.playerID);
+        
         StartCoroutine(DropDeathSequence());
+
+        StartCoroutine(WinCheckCoroutine());
     }
 
     IEnumerator DropDeathSequence()
@@ -95,5 +113,12 @@ public class PieceViewer : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    IEnumerator WinCheckCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+
+        GameManager.Instance.WinCheck();
     }
 }

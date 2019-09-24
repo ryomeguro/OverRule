@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int CurrentPlayerID { get; private set; }
 
     private int[] rotatePower = {1, 1};
+    private int[] getPieces = {0, 0};
     
     void Awake()
     {
@@ -18,6 +19,20 @@ public class GameManager : MonoBehaviour
 
     public void PlayerChange()
     {
+        /*for (int i = 0; i < 2; i++)
+        {
+            if (getPieces[i] >= 2)
+            {
+                //GameEnd((i + 1) % 2);
+                GameEndProcedure((i + 1) % 2);
+                UIManager.Instance.WinMoviePlay((i + 1) % 2);
+            }
+        }*/
+        if (WinCheck())
+        {
+            return;
+        }
+        
         Debug.Log("Change!");
         CurrentPlayerID = (CurrentPlayerID + 1) % 2;
         UIManager.Instance.PlayerChange(CurrentPlayerID);
@@ -39,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            PlayerChange();
+            //PlayerChange();
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -77,6 +92,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void GameEndProcedure(int winPlayerID)
+    {
+        Debug.Log("Procedure");
+        GameInfo.winNum[winPlayerID]++;
+        GameInfo.gameNum++;
+    }
+
     public void UseRotate(RotateDirection rd)
     {
         if (rotatePower[CurrentPlayerID] < 1)
@@ -89,4 +111,47 @@ public class GameManager : MonoBehaviour
         BoardController.Instance.Rotate(rd);
         UIManager.Instance.ChangeArrowColor(rotatePower[CurrentPlayerID]);
     }
+
+    public void AddDamage(int damage, int playerID)
+    {
+        getPieces[(playerID + 1) % 2] += damage;
+        Debug.Log("AddDamage:" + damage + ":" + getPieces[0] + ":" + getPieces[1]);
+    }
+
+    public bool WinCheck()
+    {
+        Debug.Log("Check:" + getPieces[0] + ":" + getPieces[1]);
+        for (int i = 0; i < 2; i++)
+        {
+            if (getPieces[i] >= 2)
+            {
+                //GameEnd((i + 1) % 2);
+                GameEndProcedure(i);
+                UIManager.Instance.WinMoviePlay(i);
+
+                StartCoroutine(GameEndSequence2());
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    IEnumerator GameEndSequence2()
+    {
+        if (GameInfo.winNum[0] == 2 || GameInfo.winNum[1] == 2)
+        {
+            yield return new WaitForSeconds(4f);
+            SceneManager.LoadScene("ResultScene");
+            
+        }
+        else
+        {
+            yield return new WaitForSeconds(4f);
+            SceneManager.LoadScene("GameScene");
+        }
+    }
+    
+    
 }
