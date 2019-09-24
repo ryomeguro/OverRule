@@ -31,27 +31,33 @@ public class PieceViewer : MonoBehaviour
 
     private IEnumerator MoveSequence(float duration, Transform plate, bool canPlayerChange)
     {
-        iTween.RotateTo(this.gameObject,iTween.Hash(
+        /*iTween.RotateTo(this.gameObject,iTween.Hash(
             "x",plate.transform.eulerAngles.x,
             "y", plate.transform.eulerAngles.y,
             "z", plate.transform.eulerAngles.z,
             "time",duration)
-        );
+        );*/
         
         
         Vector3 targetPosition = plate.position;
         Vector3 vel = (targetPosition - transform.position) / duration;
 
-        Quaternion targetAngle = plate.rotation;
-        //Quaternion 
+        Quaternion targetRotate = plate.rotation;
+        Quaternion startRotate = transform.rotation;
         
         float currentTime = 0;
         while (currentTime < duration)
         {
             transform.position += vel * Time.deltaTime;
             currentTime += Time.deltaTime;
+
+            transform.rotation = Quaternion.Lerp(startRotate, targetRotate, currentTime / duration);
+
             yield return null;
         }
+
+        transform.position = targetPosition;
+        transform.rotation = targetRotate;
 
         if (canPlayerChange)
             GameManager.Instance.PlayerChange();
