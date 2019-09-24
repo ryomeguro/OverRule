@@ -12,7 +12,7 @@ public class Audio : MonoBehaviour
     {
         Audio.Instance.audiosource=this.gameObject.GetComponent<AudioSource>();
         //audiosource.PlayOneShot(audioclip[0]);
-       
+        //Audio.Instance.audiosource.PlayOneShot(Audio.Instance.audioclip[0]);
     }
 
     private void Awake()
