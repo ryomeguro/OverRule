@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+
+        Audio.Instance.PlaySE(3);
         
         Debug.Log("Change!");
         CurrentPlayerID = (CurrentPlayerID + 1) % 2;
@@ -47,6 +49,13 @@ public class GameManager : MonoBehaviour
         CurrentPlayerID = (GameInfo.gameNum + 1) % 2;
         UIManager.Instance.PlayerChange(CurrentPlayerID);
         UIManager.Instance.ChangeArrowColor(rotatePower[CurrentPlayerID]);
+
+        if(CurrentPlayerID == 1)
+        {
+            Transform cameraRig = GameObject.Find("CameraRig").transform;
+
+            cameraRig.rotation = Quaternion.Euler(new Vector3(0, 180f, 0));
+        }
     }
 
     // Update is called once per frame
@@ -59,7 +68,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            BoardController.Instance.Rotate(RotateDirection.NONE);
+            //BoardController.Instance.Rotate(RotateDirection.NONE);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UnityEngine.Application.Quit();
         }
     }
 
@@ -110,6 +124,8 @@ public class GameManager : MonoBehaviour
         rotatePower[CurrentPlayerID]--;
         BoardController.Instance.Rotate(rd);
         UIManager.Instance.ChangeArrowColor(rotatePower[CurrentPlayerID]);
+
+        Audio.Instance.audiosource.PlayOneShot(Audio.Instance.audioclip[0]);
     }
 
     public void AddDamage(int damage, int playerID)

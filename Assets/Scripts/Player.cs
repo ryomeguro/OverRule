@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
                     RotateDirection rd = hit.collider.gameObject.GetComponent<RotateArrow>().direction;
 
                     //回転SE
-                    Audio.Instance.audiosource.PlayOneShot(Audio.Instance.audioclip[0]);
+                    //Audio.Instance.audiosource.PlayOneShot(Audio.Instance.audioclip[0]);
                     //BoardController.Instance.Rotate(rd);
                     GameManager.Instance.UseRotate(rd);
                 }

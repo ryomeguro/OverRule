@@ -104,6 +104,8 @@ public class PieceViewer : MonoBehaviour
         GetComponent<Collider>().enabled = false;
 
         yield return new WaitForSeconds(1f);
+
+        Audio.Instance.PlaySE(2);
         
         while (currentTime < duration)
         {

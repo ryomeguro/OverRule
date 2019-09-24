@@ -1761,7 +1761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1130783839
 Transform:
   m_ObjectHideFlags: 0
@@ -7898,6 +7898,7 @@ MonoBehaviour:
   - {fileID: 1581926573}
   - {fileID: 1547387071}
   gameNum: {fileID: 1133221229}
+  Nsurfix: {fileID: 0}
   turn: {fileID: 785199610}
   p1Win: {fileID: 1648108306}
   p2Win: {fileID: 1024351753}
@@ -7906,6 +7907,7 @@ MonoBehaviour:
   - {fileID: 113746877}
   - {fileID: 1669221250}
   turnPlayer: {fileID: 113746876}
+  moviePlays: []
 --- !u!4 &1451568270
 Transform:
   m_ObjectHideFlags: 0

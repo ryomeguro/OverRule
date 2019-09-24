@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     
     public GameObject[] Arrows;
 
-    [SerializeField] private SelectableImage gameNum, Nsurfix, turn, p1Win, p2Win;
+    [SerializeField] private SelectableImage gameNum, Nsurfix, turn, turnIcon, p1Win, p2Win;
 
     [SerializeField] private Image[] turnImages;
     [SerializeField] private SelectableImage turnPlayer;
@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
     public void PlayerChange(int playerID)
     {
         turn.SetImage(playerID);
+        turnIcon.SetImage(playerID);
         StartCoroutine(PlayerChangeSequence(playerID));
     }
 

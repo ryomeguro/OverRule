@@ -25,4 +25,9 @@ public class Audio : MonoBehaviour
     {
         
     }
+
+    public void PlaySE(int clipIndex)
+    {
+        audiosource.PlayOneShot(Audio.Instance.audioclip[clipIndex]);
+    }
 }
